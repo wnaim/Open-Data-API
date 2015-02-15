@@ -54,7 +54,7 @@ VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/v
 
 # Expose ports.
 EXPOSE 80
-EXPOSE 443
+EXPOSE 555
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
@@ -63,7 +63,7 @@ RUN touch /var/log/uwsgi/uwsgi.log
 
 RUN touch /run.sh
 RUN chmod 755 /run.sh
-RUN echo "#!/bin/bash\nuwsgi --socket 127.0.0.1:8080 --chdir /opendata/ --module app --callable app --processes 1 --daemonize /var/log/uwsgi/uwsgi.log;nginx;" >> /run.sh
+RUN echo "#!/bin/bash\nuwsgi --socket 127.0.0.1:8080 --chdir /Open-Data-API/ --module app --callable app --processes 1 --daemonize /var/log/uwsgi/uwsgi.log;nginx;" >> /run.sh
 
 CMD ["/run.sh"]
 
