@@ -21,6 +21,21 @@ idx_size = len(open_data_df.index._data)
 
 app = Flask(__name__)
 
+end_point_dict = {
+    "Message": "Welcome to the Open-Data-Api! Here is a list of queryable resources",
+    "End Points": {
+        "Education": "/api/v1/open_data/education/all",
+        "Education Columns": "/api/v1/open_data/education/columns",
+        "Downloads": "/api/v1/open_data/downloads/",
+        "CPLC": "/api/v1/open_data/cplc/all",
+        "CPLC Columns": "/api/v1/open_data/cplc/columns"
+    }
+}
+
+@app.route("/api/v1/open_data/", methods=["GET"])
+def dir():
+    return jsonify(end_point_dict)
+
 @app.route("/api/v1/open_data/education/all", methods=["GET"])
 def all():
     to_return = {'data':[], 'end_idx': 0, 'limit':30}
