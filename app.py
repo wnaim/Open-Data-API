@@ -51,7 +51,7 @@ def columns():
     to_return["columns"].extend(open_data_df.columns._data)
     return jsonify(to_return)
 
-@app.route('/api/v1/open_data/education/downloads/<path:filename>', methods=["GET"])
+@app.route('/api/v1/open_data/downloads/<path:filename>', methods=["GET"])
 def download(filename):
     downloads = './data_sets/'
     return send_from_directory(directory=downloads, filename=filename)
